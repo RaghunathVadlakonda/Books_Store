@@ -129,6 +129,10 @@ router.put('/:id',  [ auth,
 
     } catch (err) {
         console.error(err.message);
+        // Handling error if wrong in id.
+        if(err.name == 'CastError'){
+            return res.status(404).json({msg: 'Book Not Found.'});
+        }
         res.status(500).json('Server Error');
     }
 });
@@ -160,6 +164,10 @@ router.delete('/:id', auth, async(req, res) => {
 
     } catch (err) {
         console.error(err.message);
+        // Handling error if wrong in id.
+        if(err.name == 'CastError'){
+            return res.status(404).json({msg: 'Book Not Found.'});
+        }
         res.status(500).json('Server Error');
     }
 });
