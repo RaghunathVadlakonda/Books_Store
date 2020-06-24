@@ -13,6 +13,14 @@ const app = express();
  */
 connectDB();
 
+/**
+ * Define Routes.
+ */
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/books', require('./routes/api/books'));
+app.use('/api/auth', require('./routes/api/auth'));
+
+
 
 /**
  * Express configuration.
